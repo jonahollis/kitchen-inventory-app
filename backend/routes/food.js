@@ -27,20 +27,21 @@ foodRoutes.route("/food").get(function (req, res) {
 });
  
 // This section will help you get a single food by id
-foodRoutes.route("/food/:id").get(function (req, res) {
- let db_connect = dbo.getDb();
- let myquery = { _id: ObjectId(req.params.id) };
- db_connect
-   .collection("foods")
-   .findOne(myquery, function (err, result) {
-     if (err) throw err;
-     res.json(result);
-   });
+foodRoutes.route("/food/:id").get(async (req, res) => {
+  try {
+    const db_connect = await dbo.getDb("kitchen-inventory-app");
+    const myquery = { _id: new ObjectId(req.params.id) };
+    const result = await db_connect.collection("foods").findOne(myquery);
+    console.log(result)
+    res.json(result);
+  } catch (err) {
+    throw err;
+  }
 });
  
 // This section will help you create a new food.
 foodRoutes.route("/food/add").post(function (req, response) {
- let db_connect = dbo.getDb();
+ let db_connect = dbo.getDb("kitchen-inventory-app");
  let myobj = {
     text: req.body.text,
     quantity: req.body.quantity,
@@ -57,8 +58,8 @@ foodRoutes.route("/food/add").post(function (req, response) {
  
 // This section will help you update a food by id.
 foodRoutes.route("/update/:id").post(function (req, response) {
- let db_connect = dbo.getDb();
- let myquery = { _id: ObjectId(req.params.id) };
+ let db_connect = dbo.getDb("kitchen-inventory-app");
+ let myquery = { _id: new ObjectId(req.params.id) };
  let newvalues = {
    $set: {
      text: req.body.text,
@@ -78,16 +79,23 @@ foodRoutes.route("/update/:id").post(function (req, response) {
      response.json(res);
    });
 });
- 
+
 // This section will help you delete a food
-foodRoutes.route("/:id").delete((req, response) => {
- let db_connect = dbo.getDb();
- let myquery = { _id: ObjectId(req.params._id) };
- db_connect.collection("foods").deleteOne(myquery, function (err, obj) {
-   if (err) throw err;
-   console.log("1 document deleted");
-   response.json(obj);
- });
+foodRoutes.route("/:id").delete(async (req, res) => {
+  try {
+    const db_connect = await dbo.getDb("kitchen-inventory-app");
+    const myquery = { _id: new ObjectId(req.params.id) };
+    const result = await db_connect.collection("foods").deleteOne(myquery);
+    if (result.deletedCount === 1) {
+      console.log("1 document deleted");
+      res.status(204).end();
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).end();
+  }
 });
  
 module.exports = foodRoutes;

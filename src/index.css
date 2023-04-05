@@ -61,7 +61,7 @@ body {
   cursor: pointer;
 }
 
-.food.reminder {
+.food.replenish {
   border-left: 5px solid green;
 }
 
