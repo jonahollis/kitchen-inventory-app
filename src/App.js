@@ -45,6 +45,7 @@ function App() {
     const data = await res.json()
 
     setFoods([...foods, data])
+    fetchFoods()
   }
 
   // Delete Food Item
@@ -59,7 +60,8 @@ function App() {
   const toggleReplenish = async (_id) => {
     const foodToToggle = await fetchFood(_id)
     const updFood = { ...foodToToggle, replenish: !foodToToggle.replenish }
-    console.log(foodToToggle)
+    console.log("foodToToggle:", foodToToggle)
+    console.log("updFood:", updFood)
     const res = await fetch (`http://localhost:5000/update/${_id}`, {
       method: 'POST',
       headers: {
@@ -69,7 +71,8 @@ function App() {
     })
 
     const data = await res.json()
-    console.log(data)
+    console.log("response from server:", data)
+    console.log("replenish value from server:", data.replenish)
 
     setFoods(
       foods.map((food) => 
@@ -89,6 +92,7 @@ function App() {
           onAdd={addFood}/>}
       {foods.length > 0 ? 
         <Foods 
+          key={foods.length}
           foods={foods} 
           onDelete={deleteFood} 
           onToggle={toggleReplenish}/> : 'No Foods in Stock'}
