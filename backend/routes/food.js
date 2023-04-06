@@ -40,7 +40,7 @@ foodRoutes.route("/food/:id").get(async (req, res) => {
 });
  
 // This section will help you create a new food.
-foodRoutes.route("/food/add").post(function (req, res) {
+foodRoutes.route("/food/add").post(async function (req, res) {
   let db_connect = dbo.getDb("kitchen-inventory-app");
   let myobj = {
     text: req.body.text,
@@ -50,14 +50,23 @@ foodRoutes.route("/food/add").post(function (req, res) {
     location: req.body.location,
     replenish: req.body.replenish,
   };
-  db_connect.collection("foods").insertOne(myobj, function (err, res) {
-    if (err) throw err;
-    res.json(res);
-  });
-});
+  try {
+    const result = await db_connect
+      .collection("foods")
+      .insertOne(myobj)
+      console.log("1 document added")
+    const updatedFood = await db_connect
+      .collection("foods")
+      .findOne(myobj);
+    res.json(updatedFood);
+  }catch (error) {
+      console.log(error);
+      res.status(500).send("Server error");
+  }
+  }
+)
  
 // This section will help you update a food by id.
-// Works
 foodRoutes.route("/update/:id").post(async function (req, res) {
   let db_connect = dbo.getDb("kitchen-inventory-app");
   let myquery = { _id: new ObjectId(req.params.id) };
@@ -85,56 +94,6 @@ foodRoutes.route("/update/:id").post(async function (req, res) {
     res.status(500).send("Server error");
   }
 });
-
-// Does not hang on line App.js line 64, but does not re-render unless replenish is being set from true to false
-// foodRoutes.route("/update/:id").post(async function (req, res) {
-//   let db_connect = dbo.getDb("kitchen-inventory-app");
-//   let myquery = { _id: new ObjectId(req.params.id) };
-//   let newValues = {
-//     $set: {
-//       text: req.body.text,
-//       quantity: req.body.quantity,
-//       unit: req.body.unit,
-//       expiration: req.body.expiration,
-//       location: req.body.location,
-//       replenish: req.body.replenish,
-//     },
-//   };
-//   try {
-//     const result = await db_connect
-//       .collection("foods")
-//       .updateOne(myquery, newValues);
-//     console.log("1 document updated");
-//     res.json(result);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).send("Server error");
-//   }
-// });
-
-// Hangs on line 64 in App.js
-// foodRoutes.route("/update/:id").post(function (req, res) {
-//  let db_connect = dbo.getDb("kitchen-inventory-app");
-//  let myquery = { _id: new ObjectId(req.params.id) };
-//  let newvalues = {
-//    $set: {
-//      text: req.body.text,
-//      quantity: req.body.quantity,
-//      unit: req.body.unit,
-//      expiration: req.body.expiration,
-//      location: req.body.location,
-//      replenish: req.body.replenish,
-     
-//    },
-//  };
-//  db_connect
-//    .collection("foods")
-//    .updateOne(myquery, newvalues, function (err, res) {
-//      if (err) throw err;
-//      console.log("1 document updated");
-//      res.json(res);
-//    });
-// });
 
 // This section will help you delete a food
 foodRoutes.route("/:id").delete(async (req, res) => {
