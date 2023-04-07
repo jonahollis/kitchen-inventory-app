@@ -1,7 +1,7 @@
 # kitchen-inventory-app
 
 ## About this Project
-Simple kitchen inventory app demonstrating the MERN stack.
+Simple kitchen inventory app demonstrating the MERN stack styled with Bootstrap and custom CSS.
 
 -  [Live Link](#)
 
@@ -15,10 +15,11 @@ Simple kitchen inventory app demonstrating the MERN stack.
 - MongoDB
 - Create React App
 - React
+- Bootstrap
 
 ## Possible Optimizations
 
-- [ ] - pending
+- [ ] - add more robust styling to UI
 
 ## Find More
 

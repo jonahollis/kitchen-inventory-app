@@ -48,6 +48,7 @@ foodRoutes.route("/food/add").post(async function (req, res) {
     unit: req.body.unit,
     expiration: req.body.expiration,
     location: req.body.location,
+    groceryQuantity: req.body.groceryQuantity,
     replenish: req.body.replenish,
   };
   try {
@@ -77,6 +78,7 @@ foodRoutes.route("/update/:id").post(async function (req, res) {
       unit: req.body.unit,
       expiration: req.body.expiration,
       location: req.body.location,
+      groceryQuantity: req.body.groceryQuantity,
       replenish: req.body.replenish,
     },
   };
