@@ -3,7 +3,13 @@
 ## About this Project
 Simple kitchen inventory app demonstrating the MERN stack styled with Bootstrap and custom CSS.
 
--  [Live Link](#)
+## Installation
+
+- npm install
+- npm start on localhost:3000
+- node server.js on localhost:5000
+
+<!-- -  [Live Link](#) -->
 
 ## Tools used
 
@@ -19,7 +25,7 @@ Simple kitchen inventory app demonstrating the MERN stack styled with Bootstrap 
 
 ## Possible Optimizations
 
-- [ ] - add more robust styling to UI
+- [ ] - deploy project live
 
 ## Screenshots
 ![Screenshot of Kitchen Inventory View](https://github.com/jonahollis/kitchen-inventory-app/blob/main/public/img/kitch-inv-1.png?raw=true)
