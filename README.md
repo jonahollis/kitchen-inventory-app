@@ -1,11 +1,5 @@
 # kitchen-inventory-app
 
-![Screenshot of Kitchen Inventory View](https://github.com/jonahollis/kitchen-inventory-app/blob/main/public/img/kitch-inv-1.png?raw=true)
-
-![Screenshot of Add Item View](https://github.com/jonahollis/kitchen-inventory-app/blob/main/public/img/kitch-inv-3.png?raw=true)
-
-![Screenshot of Grocery List & Inventory Management View](https://github.com/jonahollis/kitchen-inventory-app/blob/main/public/img/kitch-inv-2.png?raw=true)
-
 ## About this Project
 Simple kitchen inventory app demonstrating the MERN stack styled with Bootstrap and custom CSS.
 
@@ -26,6 +20,13 @@ Simple kitchen inventory app demonstrating the MERN stack styled with Bootstrap 
 ## Possible Optimizations
 
 - [ ] - add more robust styling to UI
+
+## Screenshots
+![Screenshot of Kitchen Inventory View](https://github.com/jonahollis/kitchen-inventory-app/blob/main/public/img/kitch-inv-1.png?raw=true)
+
+![Screenshot of Add Item View](https://github.com/jonahollis/kitchen-inventory-app/blob/main/public/img/kitch-inv-3.png?raw=true)
+
+![Screenshot of Grocery List & Inventory Management View](https://github.com/jonahollis/kitchen-inventory-app/blob/main/public/img/kitch-inv-2.png?raw=true)
 
 ## Find More
 
