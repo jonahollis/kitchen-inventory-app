@@ -39,7 +39,7 @@ const handleSaveClick = (foodId) => {
             <th scope='col'>Expiration</th>
             <th scope='col'>Location</th>
             <th scope='col'>Current Qty</th>
-            <th scope='col'>Grocery Qty</th>
+            <th scope='col'>Qty Change</th>
             <th scope='col'>Actions</th>
             </tr>
         </thead>
