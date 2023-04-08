@@ -8,6 +8,7 @@ Simple kitchen inventory app demonstrating the MERN stack styled with Bootstrap 
 - npm install
 - npm start on localhost:3000
 - node server.js on localhost:5000
+- Comment out live deployment API URI (https://worried-eel-outerwear.cyclic.app/food), and uncomment local host API URI (http://localhost:5000) for deployment in local environment
 
 <!-- -  [Live Link](#) -->
 
@@ -25,7 +26,9 @@ Simple kitchen inventory app demonstrating the MERN stack styled with Bootstrap 
 
 ## Possible Optimizations
 
-- [ ] - deploy project live
+- [X] - Deploy project live
+- [ ] - Add functionality to Reduce item quantity in Kitchen Inventory View
+- [ ] - Add environment variable that dynamically defaults to live API URI if local host API URI fails to fetch
 
 ## Screenshots
 ![Screenshot of Kitchen Inventory View](https://github.com/jonahollis/kitchen-inventory-app/blob/main/public/img/kitch-inv-1.png?raw=true)
