@@ -33,7 +33,7 @@ function App() {
   // Fetch Single Food
   const fetchFood = async (_id) => {
     // const res = await fetch(`http://localhost:5000/food/${_id}`)
-    const res = await fetch(`food/${_id}`)
+    const res = await fetch(`/food/${_id}`)
     const data = await res.json()
 
     return data
@@ -42,7 +42,7 @@ function App() {
   // Add Food Item
   const addFood = async (food) => {
     // const res = await fetch('http://localhost:5000/food/add', {
-      const res = await fetch('food/add', {
+      const res = await fetch('/food/add', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -59,7 +59,7 @@ function App() {
   // Delete Food Item
   const deleteFood = async (_id) => {
     // await fetch(`http://localhost:5000/${_id}`, {
-      await fetch(`${_id}`, {
+      await fetch(`/${_id}`, {
       
       method: 'DELETE',
     })
@@ -73,7 +73,7 @@ function App() {
     console.log("foodToToggle:", foodToToggle)
     console.log("updFood:", updFood)
     // const res = await fetch (`http://localhost:5000/update/${_id}`, {
-      const res = await fetch (`update/${_id}`, {
+      const res = await fetch (`/update/${_id}`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -103,7 +103,7 @@ function App() {
         const updatedFood = { ...foodToUpdate, quantity: newQuantity , replenish: false, groceryQuantity: 0 };
         // Update the food in the database
         // const res = await fetch(`http://localhost:5000/update/${foodId}`, {
-          const res = await fetch(`update/${foodId}`, {
+          const res = await fetch(`/update/${foodId}`, {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'
