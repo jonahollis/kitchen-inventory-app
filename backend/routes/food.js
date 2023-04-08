@@ -12,7 +12,7 @@ foodRoutes.use(express.static('public'))
 foodRoutes.use(express.urlencoded({ extended: true }))
 
 // parses incoming JSON requests and puts the parsed data in request body 
-// foodRoutes.use(express.json())
+foodRoutes.use(express.json())
  
 // This will help us connect to the database
 const dbo = require("../db/conn");
