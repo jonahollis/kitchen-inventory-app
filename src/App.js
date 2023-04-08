@@ -22,8 +22,8 @@ function App() {
 
   // Fetch Foods
   const fetchFoods = async () => {
-    // const res = await fetch('http://localhost:5000/food')
-    const res = await fetch('food')
+    const res = await fetch('http://localhost:5000/food')
+    // const res = await fetch('food')
     const data = await res.json()
 
     return data

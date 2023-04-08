@@ -4,15 +4,6 @@ const express = require("express");
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /food.
 const foodRoutes = express.Router();
-
-// pointing express to access files in public folder
-foodRoutes.use(express.static('public'))
-
-// **express middleware parser functions that let you parse outgoing request data depending on the encoding of data you're sending to the server
-foodRoutes.use(express.urlencoded({ extended: true }))
-
-// parses incoming JSON requests and puts the parsed data in request body 
-foodRoutes.use(express.json())
  
 // This will help us connect to the database
 const dbo = require("../db/conn");
