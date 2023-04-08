@@ -32,7 +32,8 @@ function App() {
 
   // Fetch Single Food
   const fetchFood = async (_id) => {
-    const res = await fetch(`http://localhost:5000/food/${_id}`)
+    // const res = await fetch(`http://localhost:5000/food/${_id}`)
+    const res = await fetch(`https://worried-eel-outerwear.cyclic.app/food/${_id}`)
     const data = await res.json()
 
     return data
@@ -40,7 +41,8 @@ function App() {
 
   // Add Food Item
   const addFood = async (food) => {
-    const res = await fetch('http://localhost:5000/food/add', {
+    // const res = await fetch('http://localhost:5000/food/add', {
+    const res = await fetch('https://worried-eel-outerwear.cyclic.app/food/add', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -56,7 +58,8 @@ function App() {
 
   // Delete Food Item
   const deleteFood = async (_id) => {
-    await fetch(`http://localhost:5000/${_id}`, {
+    // await fetch(`http://localhost:5000/${_id}`, {
+    await fetch(`https://worried-eel-outerwear.cyclic.app/food/${_id}`, {
       
       method: 'DELETE',
     })
@@ -69,7 +72,8 @@ function App() {
     const updFood = { ...foodToToggle, replenish: !foodToToggle.replenish }
     console.log("foodToToggle:", foodToToggle)
     console.log("updFood:", updFood)
-    const res = await fetch (`http://localhost:5000/update/${_id}`, {
+    // const res = await fetch (`http://localhost:5000/update/${_id}`, {
+    const res = await fetch (`https://worried-eel-outerwear.cyclic.app/update/${_id}`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -98,7 +102,8 @@ function App() {
         // Update the quantity of the food
         const updatedFood = { ...foodToUpdate, quantity: newQuantity , replenish: false, groceryQuantity: 0 };
         // Update the food in the database
-        const res = await fetch(`http://localhost:5000/update/${foodId}`, {
+        // const res = await fetch(`http://localhost:5000/update/${foodId}`, {
+        const res = await fetch(`https://worried-eel-outerwear.cyclic.app/update/${foodId}`, {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'
